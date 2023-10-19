@@ -1,25 +1,69 @@
 using Animators;
 using AppData.Player;
+using AppData.Shopkeeper;
+using Interactors;
 using Physics.Bodies;
 using Player;
+using Screens;
+using Shopkeeper;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace ServiceContainers
 {
 	[DefaultExecutionOrder(-9999)]
 	public class GameplayServiceContainer : MonoBehaviour
 	{
+		[Header("Player")]
 		[SerializeField] private PlayerData playerData;
-		[SerializeField] private PlayerControllerBehaviour playerPrefab;
+		[SerializeField] private PlayerBehaviour playerPrefab;
+
+		[Header("Player Interaction")] 
+		[SerializeField] private float playerInteractionRadius;
+		
+		[Header("Shopkeeper")]
+		[SerializeField] private ShopkeeperData shopkeeperData;
+		[SerializeField] private ShopkeeperBehaviour shopkeeperPrefab;
+		[SerializeField] private UIDocument shopScreenPrefab;
+		
+		private PlayerBehaviour player;
 
 		private void Awake()
 		{
-			var playerController = Instantiate(playerPrefab);
-			var rb = playerController.transform.GetComponentInChildren<Rigidbody2D>();
-			var animator = playerController.transform.GetComponentInChildren<Animator>();
+			InitializePlayer();
+			InitializeShopkeeper();
+		}
+
+		private void InitializePlayer()
+		{
+			player = Instantiate(playerPrefab);
+			var rb = player.transform.GetComponentInChildren<Rigidbody2D>();
+			var animator = player.transform.GetComponentInChildren<Animator>();
 			var playerBody = new PlayerBody(rb);
 			var playerAnimator = new CharacterAnimator(animator);
-			playerController.Inject(playerData, playerBody, playerAnimator);
+			var interactor = InitializePlayerInteractor();
+			player.Inject(playerData, playerBody, playerAnimator, interactor);
+		}
+		
+		private IInteractor InitializePlayerInteractor()
+		{
+			var interactObject = new GameObject("Interactor");
+			var col = interactObject.AddComponent<CircleCollider2D>();
+			var playerInteractBehaviour = interactObject.transform.AddComponent<PlayerInteractBehaviour>();
+			col.radius = playerInteractionRadius;
+			col.isTrigger = true;
+			playerInteractBehaviour.transform.SetParent(player.transform);
+			playerInteractBehaviour.Inject(player, col);
+			return playerInteractBehaviour;
+		}
+		
+		private void InitializeShopkeeper()
+		{
+			var shopkeeper = Instantiate(shopkeeperPrefab);
+			var uiDocument = Instantiate(shopScreenPrefab);
+			var shopScreen = new ShopScreen(uiDocument);
+			shopkeeper.Inject(shopkeeperData, shopScreen);
 		}
 	}
 }
