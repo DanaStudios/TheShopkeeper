@@ -1,2 +1,3 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Shop/USS_Shop.uss?fileID=7433441132597879392&amp;guid=5e51f92a01de64f5aa17bc98eec46c87&amp;type=3#USS_Shop" />
 </ui:UXML>

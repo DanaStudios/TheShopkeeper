@@ -9348,8 +9348,312 @@ MonoBehaviour:
   playerInteractionRadius: 1
   shopkeeperData:
     <Name>k__BackingField: The Shopkeeper
+    <DialogueText>k__BackingField: I'm the only shopkeeper in town.
+    <ProfilePicture>k__BackingField: {fileID: 2800000, guid: 774fe8dccef69a44d9179e4529aea50c, type: 3}
   shopkeeperPrefab: {fileID: 4310667661964901776, guid: ccc31b00eca0941bcb46918c92fd7624, type: 3}
   shopScreenPrefab: {fileID: 7500859840872901639, guid: a2ab2263d4b03463290515f9e606edfa, type: 3}
+  shopkeeperCapacity: 100
+  shopkeeperItems:
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: TestItem
+    <Description>k__BackingField: A test description.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 14c5c48283a8eeb4098db89eda4a48ff, type: 3}
+    <Cost>k__BackingField: 10
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
+  - <ItemType>k__BackingField: 0
+    <Name>k__BackingField: Red Shirt
+    <Description>k__BackingField: A plain red shirt.
+    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+    <Cost>k__BackingField: 100
+    <MaxStackCount>k__BackingField: 1
 --- !u!4 &1683938327
 Transform:
   m_ObjectHideFlags: 0

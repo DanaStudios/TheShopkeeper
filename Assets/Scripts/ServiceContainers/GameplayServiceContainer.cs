@@ -26,6 +26,8 @@ namespace ServiceContainers
 		[SerializeField] private ShopkeeperData shopkeeperData;
 		[SerializeField] private ShopkeeperBehaviour shopkeeperPrefab;
 		[SerializeField] private UIDocument shopScreenPrefab;
+		[SerializeField] private int shopkeeperCapacity;
+		[SerializeField] private Item.Item[] shopkeeperItems;
 		
 		private PlayerBehaviour player;
 
@@ -63,7 +65,8 @@ namespace ServiceContainers
 			var shopkeeper = Instantiate(shopkeeperPrefab);
 			var uiDocument = Instantiate(shopScreenPrefab);
 			var shopScreen = new ShopScreen(uiDocument);
-			shopkeeper.Inject(shopkeeperData, shopScreen);
+			var inventory = new Inventory.Inventory(shopkeeperCapacity, shopkeeperItems);
+			shopkeeper.Inject(inventory, shopkeeperData, shopScreen);
 		}
 	}
 }
