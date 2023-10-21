@@ -6,16 +6,16 @@ using Item;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Screens
+namespace Screens.Shop
 {
 	public class ShopScreen : IShopScreen
 	{
-		public UIDocument UIDocument { get; }
 		public bool Visible => RootVisualElement.style.display == DisplayStyle.Flex;
 		public void Show() => RootVisualElement.style.display = DisplayStyle.Flex;
 		public void Hide() => RootVisualElement.style.display = DisplayStyle.None;
-		public event Action<IItem> BuyButtonPressed;
+		public event Action<IItem, int> BuyButtonPressed;
 		private VisualElement RootVisualElement => UIDocument.rootVisualElement;
+		private UIDocument UIDocument { get; }
 
 		public ShopScreen(UIDocument uiDocument)
 		{
@@ -50,7 +50,7 @@ namespace Screens
 	                itemListContainer.Add(itemElement);
 	                
 	                var buyButton = CreateBuyButton();
-	                buyButton.clicked += () => BuyButtonPressed?.Invoke(item);
+	                buyButton.clicked += () => BuyButtonPressed?.Invoke(item, itemCount);
 	                itemElement.Add(buyButton); 
 	            }
 	        }

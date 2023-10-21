@@ -1,38 +1,67 @@
 using System;
 using AppData.Shopkeeper;
-using Interactions;
 using Inventory;
-using Screens;
+using Item;
+using Screens.Shop;
+using Transactions;
 using UnityEngine;
+using Wallet;
 
 namespace Shopkeeper
 {
-	public class ShopkeeperBehaviour : MonoBehaviour, IInteractable
+	public class ShopkeeperBehaviour : MonoBehaviour, IShopkeeper
 	{
 		private IShopkeeperData shopkeeperData;
-		private IInventory inventory;
+		private IInventory shopkeeperInventory;
+		private IWallet shopkeeperWallet;
 		private IShopScreen shopScreen;
+		
+		private IBuyer currentBuyer;
 
-		public void Inject(IInventory inv, IShopkeeperData data, IShopScreen screen)
+		public void Inject(IShopkeeperData data, IInventory inv, IWallet wallet, IShopScreen screen)
 		{
 			shopkeeperData = data;
-			inventory = inv;
+			shopkeeperInventory = inv;
+			shopkeeperWallet = wallet;
 			shopScreen = screen;
+			
+			shopkeeperInventory.Updated += OnInventoryUpdated;
+			shopScreen.BuyButtonPressed += OnBuyButtonPressed;
+			
 			OnInventoryUpdated();
-			inventory.Updated += OnInventoryUpdated;
+		}
+		
+		public async void OnInteract(IBuyer buyer, Action callback)
+		{
+			currentBuyer = buyer;
+			shopScreen.Show();
+			await new WaitUntil(() => !shopScreen.Visible);
+			callback?.Invoke();
 		}
 
 		private void OnInventoryUpdated()
 		{
-			Debug.Log("Inventory updated!");
-			shopScreen.UpdateItemList(shopkeeperData, inventory.Items);
+			shopScreen.UpdateItemList(shopkeeperData, shopkeeperInventory.Items);
 		}
-
-		public async void Interact(Action callback)
+		
+		private void OnBuyButtonPressed(IItem item, int count)
 		{
-			shopScreen.Show();
-			await new WaitUntil(() => !shopScreen.Visible);
-			callback?.Invoke();
+			if (currentBuyer == null) throw new Exception("[Shopkeeper] Buyer does not exist!");
+			if (item == null) throw new Exception("[Shopkeeper] Item does not exist!");
+			
+			var totalCost = item.Cost * count;
+			if (!currentBuyer.CanAfford(totalCost))
+			{
+				Debug.LogWarning("[Shopkeeper] You don't have enough gold!");
+				return;
+			}
+			var itemsToGiveBuyer = shopkeeperInventory.GetItems(item, count);
+			
+			currentBuyer.Spend(totalCost);
+			shopkeeperWallet.Add(totalCost);
+			currentBuyer.Receive(itemsToGiveBuyer);
+			
+			Debug.Log($"{currentBuyer} bought {item.Name} (x{count}) for {totalCost} gold!");
 		}
 	}
 }

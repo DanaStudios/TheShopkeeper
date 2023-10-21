@@ -1,11 +1,10 @@
-using UnityEngine;
+using AppData.Character;
 
 namespace AppData.Shopkeeper
 {
-	public interface IShopkeeperData
+	public interface IShopkeeperData : ICharacterData
 	{
-		string Name { get; }
 		string DialogueText { get; }
-		Texture2D ProfilePicture { get; }
+		int StartingGold { get; }
 	}
 }

@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Player/USS_PlayerHUD.uss?fileID=7433441132597879392&amp;guid=0edbb4432431945cb9f8c20abdfc84b5&amp;type=3#USS_PlayerHUD" />
+    <ui:VisualElement name="Root">
+        <ui:VisualElement name="PlayerHUD">
+            <ui:VisualElement name="ProfileSection">
+                <ui:Image name="ProfilePicture" />
+            </ui:VisualElement>
+            <ui:VisualElement name="DataSection">
+                <ui:VisualElement name="Name">
+                    <ui:Label name="PlayerName" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Gold">
+                    <ui:Label name="GoldLabel" />
+                    <ui:Image name="GoldIcon" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -9343,13 +9343,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
+    <Name>k__BackingField: Dan
     <MoveSpeed>k__BackingField: 5
+    <ProfilePicture>k__BackingField: {fileID: 2800000, guid: b398f31984f975d439ad74fd48570d89, type: 3}
+    <StartingGold>k__BackingField: 999
   playerPrefab: {fileID: 1597015926213580263, guid: 6432fd9074bcd49e8ace29b4212a68d1, type: 3}
+  playerHUDPrefab: {fileID: 7500859840872901639, guid: 697e691e7715c4d33b67028527c3f173, type: 3}
   playerInteractionRadius: 1
+  playerItemCapacity: 100
   shopkeeperData:
     <Name>k__BackingField: The Shopkeeper
-    <DialogueText>k__BackingField: I'm the only shopkeeper in town.
+    <DialogueText>k__BackingField: You should hire Dan! He's a great developer.
     <ProfilePicture>k__BackingField: {fileID: 2800000, guid: 774fe8dccef69a44d9179e4529aea50c, type: 3}
+    <StartingGold>k__BackingField: 999
   shopkeeperPrefab: {fileID: 4310667661964901776, guid: ccc31b00eca0941bcb46918c92fd7624, type: 3}
   shopScreenPrefab: {fileID: 7500859840872901639, guid: a2ab2263d4b03463290515f9e606edfa, type: 3}
   shopkeeperCapacity: 100

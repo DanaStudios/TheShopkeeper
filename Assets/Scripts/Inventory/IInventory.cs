@@ -8,7 +8,7 @@ namespace Inventory
 	{
 		List<IItem> Items { get; }
 		event Action Updated;
-		IItem AddItem(IItem item);
-		IItem RemoveItem(IItem item);
+		IItem[] GetItems(IItem item, int count);
+		void AddItems(IItem[] items);
 	}
 }

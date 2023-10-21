@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using AppData.Shopkeeper;
 using Item;
 
-namespace Screens
+namespace Screens.Shop
 {
 	public interface IShopScreen : IScreen
 	{
-		event Action<IItem> BuyButtonPressed;
+		event Action<IItem, int> BuyButtonPressed;
 		void UpdateItemList(IShopkeeperData data, List<IItem> items);
 	}
 }

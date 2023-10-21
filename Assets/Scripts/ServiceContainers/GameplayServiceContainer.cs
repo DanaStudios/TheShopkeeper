@@ -1,10 +1,10 @@
 using Animators;
 using AppData.Player;
 using AppData.Shopkeeper;
-using Interactors;
+using Interactions;
 using Physics.Bodies;
-using Player;
-using Screens;
+using Screens.Player;
+using Screens.Shop;
 using Shopkeeper;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,10 +17,10 @@ namespace ServiceContainers
 	{
 		[Header("Player")]
 		[SerializeField] private PlayerData playerData;
-		[SerializeField] private PlayerBehaviour playerPrefab;
-
-		[Header("Player Interaction")] 
+		[SerializeField] private Player.PlayerBehaviour playerPrefab;
+		[SerializeField] private UIDocument playerHUDPrefab;
 		[SerializeField] private float playerInteractionRadius;
+		[SerializeField] private int playerItemCapacity;
 		
 		[Header("Shopkeeper")]
 		[SerializeField] private ShopkeeperData shopkeeperData;
@@ -29,7 +29,8 @@ namespace ServiceContainers
 		[SerializeField] private int shopkeeperCapacity;
 		[SerializeField] private Item.Item[] shopkeeperItems;
 		
-		private PlayerBehaviour player;
+		private Player.PlayerBehaviour playerBehaviour;
+		private ShopkeeperBehaviour shopkeeper;
 
 		private void Awake()
 		{
@@ -39,34 +40,37 @@ namespace ServiceContainers
 
 		private void InitializePlayer()
 		{
-			player = Instantiate(playerPrefab);
-			var rb = player.transform.GetComponentInChildren<Rigidbody2D>();
-			var animator = player.transform.GetComponentInChildren<Animator>();
+			playerBehaviour = Instantiate(playerPrefab);
+			var rb = playerBehaviour.transform.GetComponentInChildren<Rigidbody2D>();
+			var animator = playerBehaviour.transform.GetComponentInChildren<Animator>();
 			var playerBody = new PlayerBody(rb);
 			var playerAnimator = new CharacterAnimator(animator);
-			var interactor = InitializePlayerInteractor();
-			player.Inject(playerData, playerBody, playerAnimator, interactor);
+			var playerWallet = new Wallet.Wallet(playerData.StartingGold);
+			var playerInteractBehaviour = InitializePlayerInteractor();
+			var playerInventory = new Inventory.Inventory(playerItemCapacity, null);
+			var uiDocument = Instantiate(playerHUDPrefab);
+			var playerHUD = new PlayerHUD(uiDocument, playerData);
+			playerBehaviour.Inject(playerData, playerBody, playerAnimator, playerWallet, playerInventory, 
+				playerInteractBehaviour, playerHUD);
 		}
 		
-		private IInteractor InitializePlayerInteractor()
+		private PlayerInteractionBehaviour InitializePlayerInteractor()
 		{
 			var interactObject = new GameObject("Interactor");
-			var col = interactObject.AddComponent<CircleCollider2D>();
-			var playerInteractBehaviour = interactObject.transform.AddComponent<PlayerInteractBehaviour>();
-			col.radius = playerInteractionRadius;
-			col.isTrigger = true;
-			playerInteractBehaviour.transform.SetParent(player.transform);
-			playerInteractBehaviour.Inject(player, col);
+			var playerInteractBehaviour = interactObject.transform.AddComponent<PlayerInteractionBehaviour>();
+			playerInteractBehaviour.transform.SetParent(playerBehaviour.transform);
+			playerInteractBehaviour.Inject(playerBehaviour, playerInteractionRadius);
 			return playerInteractBehaviour;
 		}
 		
 		private void InitializeShopkeeper()
 		{
-			var shopkeeper = Instantiate(shopkeeperPrefab);
+			shopkeeper = Instantiate(shopkeeperPrefab);
 			var uiDocument = Instantiate(shopScreenPrefab);
 			var shopScreen = new ShopScreen(uiDocument);
 			var inventory = new Inventory.Inventory(shopkeeperCapacity, shopkeeperItems);
-			shopkeeper.Inject(inventory, shopkeeperData, shopScreen);
+			var wallet = new Wallet.Wallet(shopkeeperData.StartingGold);
+			shopkeeper.Inject(shopkeeperData, inventory, wallet, shopScreen);
 		}
 	}
 }
