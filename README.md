@@ -37,15 +37,6 @@ Dedication to the project's aesthetic led to the creation of custom clothing ite
 ### Limitations and Future Improvements
 The development process, while thorough, was not without its limitations, primarily due to time constraints. These limitations affected various aspects of the project, from the interaction system's simplicity to the visual artifacts in the equipment mechanics. Future iterations would benefit from revisiting these areas for refinement.
 
-## Repository Structure
-```
-- Assets/                 # Game assets including scripts, sprites, and third-party resources
-  - Scripts/              # Custom scripts for game mechanics
-  - Sprites/              # Visual assets for characters, items, and environment
-  - Documentation/          # Project documentation and design decisions
-- README.md               # Project overview and setup instructions
-```
-
 ## Conclusion
 "The Shopkeeper" is a testament to adaptive learning and efficient decision-making in game development. Despite the time constraints and ensuing limitations, the project was brought to life with a keen focus on functionality and player experience.
 
