@@ -23,48 +23,54 @@ namespace Screens.Inventory
 			InitializeAsync();
 		}
 
-		public async void UpdateItemList(ICharacterData data, IEnumerable<IItem> items, Action<IItem, int> buyClicked = null,
+		public async void UpdateUI(ICharacterData data, IEnumerable<IItem> items, Action<IItem, int> buyClicked = null,
 			Action<IItem, int> sellClicked = null, Action<IItem, int> useClicked = null)
 		{
 			await new WaitUntil(() => RootVisualElement != null);
 			RootVisualElement.Find<Image>("ProfilePicture").image = data.ProfilePicture;
 			RootVisualElement.Find<Label>("DialogueBox").text = data.DialogueText;
+			UpdateItemList(items, buyClicked, sellClicked, useClicked);
+		}
+
+		private void UpdateItemList(IEnumerable<IItem> items, Action<IItem, int> buyClicked, 
+			Action<IItem, int> sellClicked, Action<IItem, int> useClicked)
+		{
 			var itemListContainer = RootVisualElement.Find<VisualElement>("ItemList");
-	        itemListContainer.Clear();
-	        
-	        var groupedItems = items.GroupBy(i => i.Name).OrderBy(g => g.Key);
-	        foreach (var group in groupedItems)
-	        {
-	            var count = group.Count();
-	            var item = group.First();
-	            var slotsNeeded = (int)Math.Ceiling((double)count / item.MaxStackCount);
+			itemListContainer.Clear();
 
-	            for (var i = 0; i < slotsNeeded; i++)
-	            {
-		            var itemCount = item.MaxStackCount > 1 ? count : 1;
-	                var itemElement = CreateItemElement(item, itemCount);
-	                itemListContainer.Add(itemElement);
+			var groupedItems = items.GroupBy(i => i.Name).OrderBy(g => g.Key);
+			foreach (var group in groupedItems)
+			{
+				var count = group.Count();
+				var item = group.First();
+				var slotsNeeded = (int)Math.Ceiling((double)count / item.MaxStackCount);
 
-	                if (buyClicked != null)
-	                {
-		                UIToolkitExtensions.CreateButton("Buy", "button", itemElement, OnBuyClicked);
-		                void OnBuyClicked() => buyClicked.Invoke(item, itemCount);
-	                }
+				for (var i = 0; i < slotsNeeded; i++)
+				{
+					var itemCount = item.MaxStackCount > 1 ? count : 1;
+					var itemElement = CreateItemElement(item, itemCount);
+					itemListContainer.Add(itemElement);
 
-	                if (sellClicked != null)
-	                {
-		                UIToolkitExtensions.CreateButton("Sell", "button", itemElement, OnSellClicked);
-		                void OnSellClicked() => sellClicked.Invoke(item, itemCount);
-	                }
+					if (buyClicked != null)
+					{
+						UIToolkitExtensions.CreateButton("Buy", "button", itemElement, OnBuyClicked);
+						void OnBuyClicked() => buyClicked.Invoke(item, itemCount);
+					}
 
-	                if (useClicked != null)
-	                {
-		                UIToolkitExtensions.CreateButton("Equip", "button", itemElement, OnUseClicked);
-		                void OnUseClicked() => useClicked.Invoke(item, itemCount);
-	                }
-	            }
-	        }
-	    }
+					if (sellClicked != null)
+					{
+						UIToolkitExtensions.CreateButton("Sell", "button", itemElement, OnSellClicked);
+						void OnSellClicked() => sellClicked.Invoke(item, itemCount);
+					}
+
+					if (useClicked != null)
+					{
+						UIToolkitExtensions.CreateButton("Use", "button", itemElement, OnUseClicked);
+						void OnUseClicked() => useClicked.Invoke(item, itemCount);
+					}
+				}
+			}
+		}
 
 		private VisualElement CreateItemElement(IItem item, int count)
 		{

@@ -95,11 +95,11 @@ namespace Player
 		{
 			if (playerInteraction.IsInteracting)
 			{
-				playerInventoryScreen.UpdateItemList(playerData, playerInventory.Items, sellClicked: OnSellClicked);
+				playerInventoryScreen.UpdateUI(playerData, playerInventory.Items, sellClicked: OnSellClicked);
 			}
 			else
 			{
-				playerInventoryScreen.UpdateItemList(playerData, playerInventory.Items, useClicked: OnUseClicked);
+				playerInventoryScreen.UpdateUI(playerData, playerInventory.Items, useClicked: OnUseClicked);
 			}
 		}
 		

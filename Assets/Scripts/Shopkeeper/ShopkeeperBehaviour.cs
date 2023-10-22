@@ -25,6 +25,7 @@ namespace Shopkeeper
 			shopkeeperInventory = inv;
 			shopkeeperWallet = wallet;
 			inventoryScreen = screen;
+			OnInventoryUpdated();
 			shopkeeperInventory.Updated += OnInventoryUpdated;
 		}
 		
@@ -44,7 +45,7 @@ namespace Shopkeeper
 
 		private void OnInventoryUpdated()
 		{
-			inventoryScreen.UpdateItemList(shopkeeperData, shopkeeperInventory.Items, buyClicked: OnBuyButtonPressed);	
+			inventoryScreen.UpdateUI(shopkeeperData, shopkeeperInventory.Items, buyClicked: OnBuyButtonPressed);	
 		}
 
 		private void OnBuyButtonPressed(IItem item, int count)
