@@ -1,3 +1,4 @@
+using Extensions;
 using Player;
 using Shopkeeper;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace Interactions
 	public class PlayerInteractionBehaviour : MonoBehaviour, IPlayerInteraction
 	{
 		public bool IsInteracting => !enabled;
+		public IShopkeeper LastInteracted { get; private set; }
 		private IPlayer player;
 		private float radius;
 		private Collider2D[] hitColliders;
@@ -22,35 +24,15 @@ namespace Interactions
 		private void Update()
 		{
 			if (!player.PressedInteract) return;
-			var interactable = FindClosestInteractable();
-			if (interactable == null) return;
+			var closest = transform.FindClosest<IShopkeeper>(radius, hitColliders);
+			if (closest == null) return;
 			enabled = false;
-			interactable.OnInteract(player,() =>
+			LastInteracted = closest;
+			closest.OnInteract(player,() =>
 			{
-				interactable = null;
+				closest = null;
 				enabled = true;
 			});
 		}
-		
-		private IShopkeeper FindClosestInteractable()
-		{
-			var count = Physics2D.OverlapCircleNonAlloc(transform.position, radius, hitColliders);
-
-			IShopkeeper closest = null;
-			var closestDistance = float.MaxValue;
-			
-			for (var i = 0; i < count; i++)
-			{
-				var interactable = hitColliders[i].GetComponent<IShopkeeper>();
-				if (interactable == null) continue;
-				var distance = Vector2.Distance(transform.position, hitColliders[i].transform.position);
-				if (!(distance < closestDistance)) continue;
-				closestDistance = distance;
-				closest = interactable;
-			}
-    
-			return closest;
-		}
-
 	}
 }

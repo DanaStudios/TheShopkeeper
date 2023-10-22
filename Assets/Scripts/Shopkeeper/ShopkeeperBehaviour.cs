@@ -1,5 +1,6 @@
 using System;
 using AppData.Shopkeeper;
+using Commands;
 using Inventory;
 using Items;
 using Screens.Inventory;
@@ -24,15 +25,18 @@ namespace Shopkeeper
 			shopkeeperInventory = inv;
 			shopkeeperWallet = wallet;
 			inventoryScreen = screen;
-			
 			shopkeeperInventory.Updated += OnInventoryUpdated;
-			
-			OnInventoryUpdated();
 		}
 		
+		public bool CanAfford(int totalCost) => shopkeeperWallet?.CurrentGold >= totalCost;
+		public void ReceiveItems(IItem[] items) => shopkeeperInventory.AddItems(items);
+		public IItem[] GetItems(IItem item, int count) => shopkeeperInventory.GetItems(item, count);
+		public void Spend(int gold) => shopkeeperWallet.Subtract(gold);
+		public void Earn(int gold) => shopkeeperWallet.Add(gold);
 		public async void OnInteract(IBuyer buyer, Action callback)
 		{
 			currentBuyer = buyer;
+			OnInventoryUpdated();
 			inventoryScreen.Show();
 			await new WaitUntil(() => !inventoryScreen.Visible);
 			callback?.Invoke();
@@ -40,27 +44,13 @@ namespace Shopkeeper
 
 		private void OnInventoryUpdated()
 		{
-			inventoryScreen.UpdateItemList(shopkeeperData, shopkeeperInventory.Items, buyClicked: OnBuyButtonPressed);
+			inventoryScreen.UpdateItemList(shopkeeperData, shopkeeperInventory.Items, buyClicked: OnBuyButtonPressed);	
 		}
-		
+
 		private void OnBuyButtonPressed(IItem item, int count)
 		{
-			if (currentBuyer == null) throw new Exception("[Shopkeeper] Buyer does not exist!");
-			if (item == null) throw new Exception("[Shopkeeper] Item does not exist!");
-			
-			var totalCost = item.Cost * count;
-			if (!currentBuyer.CanAfford(totalCost))
-			{
-				Debug.LogWarning("[Shopkeeper] You don't have enough gold!");
-				return;
-			}
-			var itemsToGiveBuyer = shopkeeperInventory.GetItems(item, count);
-			
-			currentBuyer.Spend(totalCost);
-			shopkeeperWallet.Add(totalCost);
-			currentBuyer.Receive(itemsToGiveBuyer);
-			
-			Debug.Log($"{currentBuyer} bought {item.Name} (x{count}) for {totalCost} gold!");
+			ICommand sellCommand = new SellCommand(this, currentBuyer, item, count);
+			sellCommand.Execute();
 		}
 	}
 }

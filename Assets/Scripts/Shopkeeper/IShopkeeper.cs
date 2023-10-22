@@ -1,11 +1,10 @@
 using System;
-using Interactions;
 using Transactions;
 
 namespace Shopkeeper
 {
-	public interface IShopkeeper
+	public interface IShopkeeper : IBuyer, ISeller
 	{ 
-		void OnInteract(IBuyer buyer, Action callback);
+		void OnInteract(IBuyer player, Action action);
 	}
 }

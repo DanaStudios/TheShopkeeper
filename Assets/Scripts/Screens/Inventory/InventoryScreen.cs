@@ -32,7 +32,7 @@ namespace Screens.Inventory
 			var itemListContainer = RootVisualElement.Find<VisualElement>("ItemList");
 	        itemListContainer.Clear();
 	        
-	        var groupedItems = items.GroupBy(i => i.Name);
+	        var groupedItems = items.GroupBy(i => i.Name).OrderBy(g => g.Key);
 	        foreach (var group in groupedItems)
 	        {
 	            var count = group.Count();

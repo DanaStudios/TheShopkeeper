@@ -9363,7 +9363,7 @@ MonoBehaviour:
   shopkeeperCapacity: 100
   shopkeeperItems:
   - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: TestItem
+    <Name>k__BackingField: ATestItem
     <Description>k__BackingField: A test description.
     <Icon>k__BackingField: {fileID: 2800000, guid: 14c5c48283a8eeb4098db89eda4a48ff, type: 3}
     <Cost>k__BackingField: 10

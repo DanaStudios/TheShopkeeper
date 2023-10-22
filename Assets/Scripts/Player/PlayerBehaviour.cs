@@ -1,6 +1,7 @@
 using System;
 using Animators;
 using AppData.Player;
+using Commands;
 using Interactions;
 using Inventory;
 using Items;
@@ -44,13 +45,10 @@ namespace Player
 		}
 
 		public bool CanAfford(int totalCost) => playerWallet?.CurrentGold >= totalCost;
-		public void Receive(IItem[] items) => playerInventory.AddItems(items);
+		public void ReceiveItems(IItem[] items) => playerInventory.AddItems(items);
+		public IItem[] GetItems(IItem item, int count) => playerInventory.GetItems(item, count);
 		public void Spend(int gold) => playerWallet.Subtract(gold);
-
-		public void SellTo(IItem item, int count, IInventory inventory)
-		{
-			throw new NotImplementedException();
-		}
+		public void Earn(int gold) => playerWallet.Add(gold);
 
 		private void Update() => ProcessInput();
 		private void FixedUpdate() => Move();
@@ -62,10 +60,7 @@ namespace Player
 			var vertical = Input.GetAxisRaw("Vertical");
 			var isInteracting = playerInteraction.IsInteracting;
 			
-			if (PressedInventory && !isInteracting)
-			{
-				ToggleInventoryScreen();
-			}
+			if (PressedInventory) ToggleInventoryScreen();
 
 			if (isInteracting || playerInventoryScreen.Visible)
 			{
@@ -92,14 +87,20 @@ namespace Player
 				return;
 			}
 			
-			playerInventoryScreen.UpdateItemList(playerData, playerInventory.Items, useClicked: OnUseButtonPressed);
+			OnInventoryUpdated();
 			playerInventoryScreen.Show();
 		}
 		
 		private void OnInventoryUpdated()
 		{
-			playerInventoryScreen.UpdateItemList(playerData, playerInventory.Items, sellClicked: OnSellButtonPressed,
-				useClicked: OnUseButtonPressed);
+			if (playerInteraction.IsInteracting)
+			{
+				playerInventoryScreen.UpdateItemList(playerData, playerInventory.Items, sellClicked: OnSellClicked);
+			}
+			else
+			{
+				playerInventoryScreen.UpdateItemList(playerData, playerInventory.Items, useClicked: OnUseClicked);
+			}
 		}
 		
 		private void OnWalletUpdated(int newAmount)
@@ -107,12 +108,16 @@ namespace Player
 			playerHUD.UpdateGoldAmount(newAmount);
 		}
 		
-		private void OnSellButtonPressed(IItem item, int count)
+		private void OnSellClicked(IItem item, int count)
 		{
-			throw new NotImplementedException();
+			var shopkeeper = playerInteraction.LastInteracted;
+			if (shopkeeper == null) throw new Exception("[PlayerBehaviour] Shopkeeper not found!");
+			
+			ICommand sellCommand = new SellCommand(this, shopkeeper, item, count);
+			sellCommand.Execute();
 		}
 
-		private void OnUseButtonPressed(IItem item, int count)
+		private void OnUseClicked(IItem item, int count)
 		{
 			throw new NotImplementedException();
 		}
