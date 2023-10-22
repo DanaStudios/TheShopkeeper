@@ -57,13 +57,13 @@ namespace Screens.Inventory
 						void OnBuyClicked() => buyClicked.Invoke(item, itemCount);
 					}
 
-					if (sellClicked != null)
+					if (sellClicked != null && !item.Equipped)
 					{
 						UIToolkitExtensions.CreateButton("Sell", "button", itemElement, OnSellClicked);
 						void OnSellClicked() => sellClicked.Invoke(item, itemCount);
 					}
 
-					if (useClicked != null)
+					if (useClicked != null && !item.Equipped)
 					{
 						UIToolkitExtensions.CreateButton("Use", "button", itemElement, OnUseClicked);
 						void OnUseClicked() => useClicked.Invoke(item, itemCount);
@@ -75,7 +75,7 @@ namespace Screens.Inventory
 		private VisualElement CreateItemElement(IItem item, int count)
 		{
 			var itemElement = UIToolkitExtensions.CreateVisualElement("item");
-		    UIToolkitExtensions.CreateImage(item.Icon, "item-texture", itemElement);
+		    UIToolkitExtensions.CreateImage(item.Sprite.texture, "item-texture", itemElement);
 		    UIToolkitExtensions.CreateLabel(item.Name, "item-name", itemElement);
 		    UIToolkitExtensions.CreateLabel("x" + count, "item-count", itemElement);
 		    UIToolkitExtensions.CreateLabel(item.Cost + "g", "item-cost", itemElement);

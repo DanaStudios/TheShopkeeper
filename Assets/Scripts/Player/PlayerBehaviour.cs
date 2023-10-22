@@ -1,6 +1,8 @@
 using System;
+using System.Linq;
 using Animators;
 using AppData.Player;
+using BodyParts;
 using Commands;
 using Interactions;
 using Inventory;
@@ -17,6 +19,7 @@ namespace Player
 	{
 		private IPlayerData playerData;
 		private IBody playerBody;
+		private IBodyPart[] playerBodyParts;
 		private IAnimator playerAnimator;
 		private IWallet playerWallet;
 		private IInventory playerInventory;
@@ -28,11 +31,13 @@ namespace Player
 		public bool PressedInteract => Input.GetKeyDown(KeyCode.E) && !playerInventoryScreen.Visible;
 		public bool PressedInventory => Input.GetKeyDown(KeyCode.I);
 
-		public void Inject(IPlayerData data, IBody body, IAnimator animator, IWallet wallet, IInventory inventory,
-			IPlayerInteraction interaction, IInventoryScreen inventoryScreen, IPlayerHUD hud)
+		public void Inject(IPlayerData data, IBody body, IBodyPart[] bodyParts, IAnimator animator,
+			IWallet wallet, IInventory inventory, IPlayerInteraction interaction,
+			IInventoryScreen inventoryScreen, IPlayerHUD hud)
 		{
 			playerData = data;
 			playerBody = body;
+			playerBodyParts = bodyParts;
 			playerAnimator = animator;
 			playerWallet = wallet;
 			playerInventory = inventory;
@@ -112,14 +117,33 @@ namespace Player
 		{
 			var shopkeeper = playerInteraction.LastInteracted;
 			if (shopkeeper == null) throw new Exception("[PlayerBehaviour] Shopkeeper not found!");
+
+			if (playerBodyParts.Any(bodyPart => bodyPart.EquippedItem == item))
+			{
+				Debug.LogWarning("[PlayerBehaviour] Cannot sell an equipped item!");
+			}
 			
 			ICommand sellCommand = new SellCommand(this, shopkeeper, item, count);
 			sellCommand.Execute();
 		}
 
+		// TODO: Do something about the count here
 		private void OnUseClicked(IItem item, int count)
 		{
-			throw new NotImplementedException();
+			if (item.Equipped)
+			{
+				throw new Exception("[PlayerBehaviour] Item already equipped!");
+			}
+
+			// TODO: Have a direct reference to the body part
+			var match = playerBodyParts.FirstOrDefault(bodyPart => bodyPart.BodyPartType == item.BodyPartType);
+			if (match == default)
+			{
+				throw new Exception($"[PlayerBehaviour] There's no {item.BodyPartType} body part!");
+			}
+			
+			match.EquipItem(item);
+			OnInventoryUpdated();
 		}
 	}
 }

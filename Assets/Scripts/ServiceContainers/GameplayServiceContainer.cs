@@ -1,6 +1,7 @@
 using Animators;
 using AppData.Player;
 using AppData.Shopkeeper;
+using BodyParts;
 using Interactions;
 using Items;
 using Physics.Bodies;
@@ -25,6 +26,14 @@ namespace ServiceContainers
 		[SerializeField] private float playerInteractionRadius;
 		[SerializeField] private int playerItemCapacity;
 		
+		[Header("Player Default Items")]
+		[SerializeField] private Item defaultHeadItem;
+		[SerializeField] private Item defaultTorsoItem;
+		[SerializeField] private Item defaultLegsItem;
+		[SerializeField] private Item defaultFeetItem;
+		[SerializeField] private Vector2 bodyPartRelativePos;
+		[SerializeField] private string sortingLayerName;
+		
 		[Header("Shopkeeper")]
 		[SerializeField] private ShopkeeperData shopkeeperData;
 		[SerializeField] private ShopkeeperBehaviour shopkeeperPrefab;
@@ -44,17 +53,27 @@ namespace ServiceContainers
 		private void InitializePlayer()
 		{
 			playerBehaviour = Instantiate(playerPrefab);
-			var rb = playerBehaviour.transform.GetComponentInChildren<Rigidbody2D>();
-			var animator = playerBehaviour.transform.GetComponentInChildren<Animator>();
+			var playerTransform = playerBehaviour.transform;
+			var rb = playerTransform.GetComponentInChildren<Rigidbody2D>();
+			var animator = playerTransform.GetComponentInChildren<Animator>();
 			var playerBody = new PlayerBody(rb);
 			var playerAnimator = new CharacterAnimator(animator);
 			var playerWallet = new Wallet(playerData.StartingGold);
 			var playerInteractBehaviour = InitializePlayerInteractor();
-			var playerInventory = new Inventory.Inventory(playerItemCapacity, null);
+			var playerItems = new [] { defaultHeadItem, defaultTorsoItem, defaultLegsItem, defaultFeetItem };
+			var playerInventory = new Inventory.Inventory(playerItemCapacity, playerItems);
 			var playerHUD = new PlayerHUD(Instantiate(playerHUDPrefab), playerData);
 			var playerInventoryScreen = new InventoryScreen(Instantiate(playerInventoryPrefab));
-			playerBehaviour.Inject(playerData, playerBody, playerAnimator, playerWallet, playerInventory, 
-				playerInteractBehaviour, playerInventoryScreen, playerHUD);
+			var playerBodyParts = new IBodyPart[]
+			{
+				new BodyPart(BodyPartType.Head, CreateRenderer("Head", animator.transform), defaultHeadItem),
+				new BodyPart(BodyPartType.Torso, CreateRenderer("Torso", animator.transform), defaultTorsoItem),
+				new BodyPart(BodyPartType.Legs, CreateRenderer("Legs", animator.transform), defaultLegsItem),
+				new BodyPart(BodyPartType.Feet, CreateRenderer("Feet", animator.transform), defaultFeetItem)
+			};
+			
+			playerBehaviour.Inject(playerData, playerBody, playerBodyParts, playerAnimator, playerWallet, 
+				playerInventory, playerInteractBehaviour, playerInventoryScreen, playerHUD);
 		}
 		
 		private PlayerInteractionBehaviour InitializePlayerInteractor()
@@ -64,6 +83,16 @@ namespace ServiceContainers
 			playerInteractBehaviour.transform.SetParent(playerBehaviour.transform);
 			playerInteractBehaviour.Inject(playerBehaviour, playerInteractionRadius);
 			return playerInteractBehaviour;
+		}
+
+		private SpriteRenderer CreateRenderer(string objectName, Transform parent)
+		{
+			var newObject = new GameObject(objectName);
+			var newRenderer = newObject.transform.AddComponent<SpriteRenderer>();
+			newObject.transform.SetParent(parent);
+			newObject.transform.localPosition = bodyPartRelativePos;
+			newRenderer.sortingLayerName = sortingLayerName;
+			return newRenderer;
 		}
 		
 		private void InitializeShopkeeper()

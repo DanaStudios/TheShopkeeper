@@ -9353,6 +9353,36 @@ MonoBehaviour:
   playerInventoryPrefab: {fileID: 7500859840872901639, guid: 1658664a5e5f743879f2f11a4fd38513, type: 3}
   playerInteractionRadius: 1
   playerItemCapacity: 100
+  defaultHeadItem:
+    <BodyPartType>k__BackingField: 0
+    <Name>k__BackingField: DefaultHead
+    <Description>k__BackingField: Initial head equipment.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 6b37b0bfcbfef4e7d9550080956fc210, type: 3}
+    <Cost>k__BackingField: 1
+    <MaxStackCount>k__BackingField: 1
+  defaultTorsoItem:
+    <BodyPartType>k__BackingField: 1
+    <Name>k__BackingField: DefaultTorso
+    <Description>k__BackingField: Initial torso equipment.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 8b40a03a18fee40f5ac2ea829cee88ad, type: 3}
+    <Cost>k__BackingField: 1
+    <MaxStackCount>k__BackingField: 1
+  defaultLegsItem:
+    <BodyPartType>k__BackingField: 2
+    <Name>k__BackingField: DefaultLegs
+    <Description>k__BackingField: Initial legs equipment.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 7a1158a8fb704459ab1928cf558a6f4d, type: 3}
+    <Cost>k__BackingField: 1
+    <MaxStackCount>k__BackingField: 1
+  defaultFeetItem:
+    <BodyPartType>k__BackingField: 3
+    <Name>k__BackingField: DefaultFeet
+    <Description>k__BackingField: Initial feet equipment.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 6539f77d17bf040f2945c253d0383e7b, type: 3}
+    <Cost>k__BackingField: 1
+    <MaxStackCount>k__BackingField: 1
+  bodyPartRelativePos: {x: 0.0004, y: 0.455}
+  sortingLayerName: Player
   shopkeeperData:
     <Name>k__BackingField: The Shopkeeper
     <DialogueText>k__BackingField: You should hire Dan! He's a great developer.
@@ -9362,305 +9392,125 @@ MonoBehaviour:
   shopScreenPrefab: {fileID: 7500859840872901639, guid: a2ab2263d4b03463290515f9e606edfa, type: 3}
   shopkeeperCapacity: 100
   shopkeeperItems:
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: ATestItem
-    <Description>k__BackingField: A test description.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 14c5c48283a8eeb4098db89eda4a48ff, type: 3}
-    <Cost>k__BackingField: 10
+  - <BodyPartType>k__BackingField: 0
+    <Name>k__BackingField: BlackHead
+    <Description>k__BackingField: A black-haired head.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 918028ce9f11748fdae308aaf46d68d6, type: 3}
+    <Cost>k__BackingField: 50
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+  - <BodyPartType>k__BackingField: 0
+    <Name>k__BackingField: BlueHead
+    <Description>k__BackingField: A blue-haired head.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: dad2ec325b7e34df585057ab440626b9, type: 3}
+    <Cost>k__BackingField: 75
+    <MaxStackCount>k__BackingField: 1
+  - <BodyPartType>k__BackingField: 0
+    <Name>k__BackingField: GreenHead
+    <Description>k__BackingField: A green-haired head.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: c456f13939bd748a7a27efa7acec332d, type: 3}
     <Cost>k__BackingField: 100
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+  - <BodyPartType>k__BackingField: 0
+    <Name>k__BackingField: PurpleHead
+    <Description>k__BackingField: A purple-haired head.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 484fb03c13b2e49c1b0eafe830f9b117, type: 3}
+    <Cost>k__BackingField: 50
+    <MaxStackCount>k__BackingField: 1
+  - <BodyPartType>k__BackingField: 0
+    <Name>k__BackingField: RedHead
+    <Description>k__BackingField: A red-haired head.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: b45ea036680d1411fbad31054f4170b9, type: 3}
+    <Cost>k__BackingField: 150
+    <MaxStackCount>k__BackingField: 1
+  - <BodyPartType>k__BackingField: 1
+    <Name>k__BackingField: BlackTorso
+    <Description>k__BackingField: A black torso.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 24e11f4bdff84404296d41a4859f0f7a, type: 3}
+    <Cost>k__BackingField: 200
+    <MaxStackCount>k__BackingField: 1
+  - <BodyPartType>k__BackingField: 1
+    <Name>k__BackingField: BlueTorso
+    <Description>k__BackingField: A blue torso.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 686699a35b6e44126a8d6e829bc315b9, type: 3}
+    <Cost>k__BackingField: 200
+    <MaxStackCount>k__BackingField: 1
+  - <BodyPartType>k__BackingField: 1
+    <Name>k__BackingField: GreenTorso
+    <Description>k__BackingField: A green torso.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: d293c6151ea2e4ff383438de2e4df89f, type: 3}
+    <Cost>k__BackingField: 200
+    <MaxStackCount>k__BackingField: 1
+  - <BodyPartType>k__BackingField: 1
+    <Name>k__BackingField: PurpleTorso
+    <Description>k__BackingField: A purple torso.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 42f8956aec8e44551986774e6af0d7c5, type: 3}
+    <Cost>k__BackingField: 200
+    <MaxStackCount>k__BackingField: 1
+  - <BodyPartType>k__BackingField: 1
+    <Name>k__BackingField: RedTorso
+    <Description>k__BackingField: A red torso.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 3404a71455f94411a96e68016ec0f215, type: 3}
+    <Cost>k__BackingField: 200
+    <MaxStackCount>k__BackingField: 1
+  - <BodyPartType>k__BackingField: 2
+    <Name>k__BackingField: BlackLegs
+    <Description>k__BackingField: Hmm... black legs?
+    <Sprite>k__BackingField: {fileID: 21300000, guid: fa9bbd4921be4459ba9e16cecb4e89a6, type: 3}
     <Cost>k__BackingField: 100
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+  - <BodyPartType>k__BackingField: 2
+    <Name>k__BackingField: BlueLegs
+    <Description>k__BackingField: Hmm... blue legs?
+    <Sprite>k__BackingField: {fileID: 21300000, guid: d82f27a72e4ec46a08904ed8e1945e72, type: 3}
     <Cost>k__BackingField: 100
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+  - <BodyPartType>k__BackingField: 2
+    <Name>k__BackingField: GreenLegs
+    <Description>k__BackingField: Hmm... green legs?
+    <Sprite>k__BackingField: {fileID: 21300000, guid: f9ced3a8635f2473db9be9cefd23682c, type: 3}
     <Cost>k__BackingField: 100
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+  - <BodyPartType>k__BackingField: 2
+    <Name>k__BackingField: PurpleLegs
+    <Description>k__BackingField: Hmm... purple legs?
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 3653e01ddacf24655827c5eea8859abd, type: 3}
     <Cost>k__BackingField: 100
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+  - <BodyPartType>k__BackingField: 2
+    <Name>k__BackingField: RedLegs
+    <Description>k__BackingField: Hmm... red legs?
+    <Sprite>k__BackingField: {fileID: 21300000, guid: b8d0bfea516c84c1b83dab9cbf6c8697, type: 3}
     <Cost>k__BackingField: 100
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
+  - <BodyPartType>k__BackingField: 3
+    <Name>k__BackingField: BlackFeet
+    <Description>k__BackingField: A pair of black feet.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: f04f7e29fcce04d54bda722ce81ba02e, type: 3}
+    <Cost>k__BackingField: 25
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
+  - <BodyPartType>k__BackingField: 3
+    <Name>k__BackingField: BlueFeet
+    <Description>k__BackingField: A pair of blue feet.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 42575c5f4d78c4803ae9219fe94275b6, type: 3}
+    <Cost>k__BackingField: 25
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
+  - <BodyPartType>k__BackingField: 3
+    <Name>k__BackingField: GreenFeet
+    <Description>k__BackingField: A pair of green feet.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 952c64f28061f496db5dafd4510634a3, type: 3}
+    <Cost>k__BackingField: 25
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
+  - <BodyPartType>k__BackingField: 3
+    <Name>k__BackingField: PurpleFeet
+    <Description>k__BackingField: A pair of purple feet.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 47e9dd2d751034daa86d760c7141c134, type: 3}
+    <Cost>k__BackingField: 25
     <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
-    <MaxStackCount>k__BackingField: 1
-  - <ItemType>k__BackingField: 0
-    <Name>k__BackingField: Red Shirt
-    <Description>k__BackingField: A plain red shirt.
-    <Icon>k__BackingField: {fileID: 2800000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
-    <Cost>k__BackingField: 100
+  - <BodyPartType>k__BackingField: 3
+    <Name>k__BackingField: RedFeet
+    <Description>k__BackingField: A pair of red feet.
+    <Sprite>k__BackingField: {fileID: 21300000, guid: e6fe5a828e2da4361844388c1b1094f2, type: 3}
+    <Cost>k__BackingField: 25
     <MaxStackCount>k__BackingField: 1
 --- !u!4 &1683938327
 Transform:
