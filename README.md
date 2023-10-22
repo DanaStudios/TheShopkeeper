@@ -42,7 +42,7 @@ The development process, while thorough, was not without its limitations, primar
 - Assets/                 # Game assets including scripts, sprites, and third-party resources
   - Scripts/              # Custom scripts for game mechanics
   - Sprites/              # Visual assets for characters, items, and environment
-- Documentation/          # Project documentation and design decisions
+  - Documentation/          # Project documentation and design decisions
 - README.md               # Project overview and setup instructions
 ```
 
