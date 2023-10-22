@@ -50,8 +50,3 @@ Alternatively, check the repo's releases.
 
 ## Contact
 For any queries or feedback related to this project, please feel free to reach out!
-
----
-
-Best regards,  
-Dan
