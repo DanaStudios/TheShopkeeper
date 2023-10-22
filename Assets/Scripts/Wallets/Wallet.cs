@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Wallet
+namespace Wallets
 {
 	public class Wallet : IWallet
 	{

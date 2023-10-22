@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Item;
+using Items;
 
 namespace Inventory
 {
@@ -11,7 +11,7 @@ namespace Inventory
 		public event Action Updated;
 		private readonly int capacity;
 		
-		public Inventory(int capacity, IEnumerable<Item.Item> items)
+		public Inventory(int capacity, IEnumerable<Item> items)
 		{
 			Items = new List<IItem>(capacity);
 			this.capacity = capacity;

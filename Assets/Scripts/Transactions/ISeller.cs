@@ -1,5 +1,5 @@
 using Inventory;
-using Item;
+using Items;
 
 namespace Transactions
 {

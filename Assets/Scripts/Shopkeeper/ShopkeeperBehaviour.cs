@@ -1,11 +1,11 @@
 using System;
 using AppData.Shopkeeper;
 using Inventory;
-using Item;
-using Screens.Shop;
+using Items;
+using Screens.Inventory;
 using Transactions;
 using UnityEngine;
-using Wallet;
+using Wallets;
 
 namespace Shopkeeper
 {
@@ -14,19 +14,18 @@ namespace Shopkeeper
 		private IShopkeeperData shopkeeperData;
 		private IInventory shopkeeperInventory;
 		private IWallet shopkeeperWallet;
-		private IShopScreen shopScreen;
+		private IInventoryScreen inventoryScreen;
 		
 		private IBuyer currentBuyer;
 
-		public void Inject(IShopkeeperData data, IInventory inv, IWallet wallet, IShopScreen screen)
+		public void Inject(IShopkeeperData data, IInventory inv, IWallet wallet, IInventoryScreen screen)
 		{
 			shopkeeperData = data;
 			shopkeeperInventory = inv;
 			shopkeeperWallet = wallet;
-			shopScreen = screen;
+			inventoryScreen = screen;
 			
 			shopkeeperInventory.Updated += OnInventoryUpdated;
-			shopScreen.BuyButtonPressed += OnBuyButtonPressed;
 			
 			OnInventoryUpdated();
 		}
@@ -34,14 +33,14 @@ namespace Shopkeeper
 		public async void OnInteract(IBuyer buyer, Action callback)
 		{
 			currentBuyer = buyer;
-			shopScreen.Show();
-			await new WaitUntil(() => !shopScreen.Visible);
+			inventoryScreen.Show();
+			await new WaitUntil(() => !inventoryScreen.Visible);
 			callback?.Invoke();
 		}
 
 		private void OnInventoryUpdated()
 		{
-			shopScreen.UpdateItemList(shopkeeperData, shopkeeperInventory.Items);
+			inventoryScreen.UpdateItemList(shopkeeperData, shopkeeperInventory.Items, buyClicked: OnBuyButtonPressed);
 		}
 		
 		private void OnBuyButtonPressed(IItem item, int count)

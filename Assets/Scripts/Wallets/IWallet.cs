@@ -1,6 +1,6 @@
 using System;
 
-namespace Wallet
+namespace Wallets
 {
 	public interface IWallet
 	{

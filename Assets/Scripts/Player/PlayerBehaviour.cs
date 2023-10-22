@@ -3,11 +3,12 @@ using Animators;
 using AppData.Player;
 using Interactions;
 using Inventory;
-using Item;
+using Items;
 using Physics.Bodies;
+using Screens.Inventory;
 using Screens.Player;
 using UnityEngine;
-using Wallet;
+using Wallets;
 
 namespace Player
 {
@@ -20,21 +21,26 @@ namespace Player
 		private IInventory playerInventory;
 		private IPlayerInteraction playerInteraction;
 		private IPlayerHUD playerHUD;
+		private IInventoryScreen playerInventoryScreen;
 		private Vector2 movementDirection;
-		
-		public bool PressedInteract => Input.GetKeyDown(KeyCode.E);
+
+		public bool PressedInteract => Input.GetKeyDown(KeyCode.E) && !playerInventoryScreen.Visible;
+		public bool PressedInventory => Input.GetKeyDown(KeyCode.I);
 
 		public void Inject(IPlayerData data, IBody body, IAnimator animator, IWallet wallet, IInventory inventory,
-			IPlayerInteraction interaction, IPlayerHUD hud)
+			IPlayerInteraction interaction, IInventoryScreen inventoryScreen, IPlayerHUD hud)
 		{
 			playerData = data;
 			playerBody = body;
 			playerAnimator = animator;
 			playerWallet = wallet;
-			playerWallet.AmountUpdated += OnWalletUpdated;
 			playerInventory = inventory;
 			playerInteraction = interaction;
+			playerInventoryScreen = inventoryScreen;
 			playerHUD = hud;
+			
+			playerWallet.AmountUpdated += OnWalletUpdated;
+			playerInventory.Updated += OnInventoryUpdated;
 		}
 
 		public bool CanAfford(int totalCost) => playerWallet?.CurrentGold >= totalCost;
@@ -52,14 +58,25 @@ namespace Player
 
 		private void ProcessInput()
 		{
-			movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+			var horizontal = Input.GetAxisRaw("Horizontal");
+			var vertical = Input.GetAxisRaw("Vertical");
+			var isInteracting = playerInteraction.IsInteracting;
+			
+			if (PressedInventory && !isInteracting)
+			{
+				ToggleInventoryScreen();
+			}
+
+			if (isInteracting || playerInventoryScreen.Visible)
+			{
+				movementDirection = Vector2.zero;
+				return;
+			}
+			
+			movementDirection = new Vector2(horizontal, vertical);
 		}
 
-		private void Move()
-		{
-			if (playerInteraction.IsInteracting) return;
-			playerBody.SetVelocity(movementDirection * playerData.MoveSpeed);
-		}
+		private void Move() => playerBody.SetVelocity(movementDirection * playerData.MoveSpeed);
 
 		private void UpdateAnimation()
 		{
@@ -67,9 +84,37 @@ namespace Player
 			playerAnimator.PlayAnimation(Animator.StringToHash(animHash));
 		}
 		
+		private void ToggleInventoryScreen()
+		{
+			if (playerInventoryScreen.Visible)
+			{
+				playerInventoryScreen.Hide();
+				return;
+			}
+			
+			playerInventoryScreen.UpdateItemList(playerData, playerInventory.Items, useClicked: OnUseButtonPressed);
+			playerInventoryScreen.Show();
+		}
+		
+		private void OnInventoryUpdated()
+		{
+			playerInventoryScreen.UpdateItemList(playerData, playerInventory.Items, sellClicked: OnSellButtonPressed,
+				useClicked: OnUseButtonPressed);
+		}
+		
 		private void OnWalletUpdated(int newAmount)
 		{
 			playerHUD.UpdateGoldAmount(newAmount);
+		}
+		
+		private void OnSellButtonPressed(IItem item, int count)
+		{
+			throw new NotImplementedException();
+		}
+
+		private void OnUseButtonPressed(IItem item, int count)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

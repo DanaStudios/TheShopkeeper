@@ -6,5 +6,6 @@ namespace AppData.Character
 	{
 		string Name { get; }
 		Texture2D ProfilePicture { get; }
+		string DialogueText { get; }
 	}
 }

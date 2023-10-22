@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Item
+namespace Items
 {
 	public interface IItem
 	{

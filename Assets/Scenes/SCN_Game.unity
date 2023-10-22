@@ -9346,9 +9346,11 @@ MonoBehaviour:
     <Name>k__BackingField: Dan
     <MoveSpeed>k__BackingField: 5
     <ProfilePicture>k__BackingField: {fileID: 2800000, guid: b398f31984f975d439ad74fd48570d89, type: 3}
+    <DialogueText>k__BackingField: Hey! Name's Dan.
     <StartingGold>k__BackingField: 999
   playerPrefab: {fileID: 1597015926213580263, guid: 6432fd9074bcd49e8ace29b4212a68d1, type: 3}
   playerHUDPrefab: {fileID: 7500859840872901639, guid: 697e691e7715c4d33b67028527c3f173, type: 3}
+  playerInventoryPrefab: {fileID: 7500859840872901639, guid: 1658664a5e5f743879f2f11a4fd38513, type: 3}
   playerInteractionRadius: 1
   playerItemCapacity: 100
   shopkeeperData:

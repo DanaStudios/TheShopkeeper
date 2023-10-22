@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Item;
+using Items;
 
 namespace Inventory
 {

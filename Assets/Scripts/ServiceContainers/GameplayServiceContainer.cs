@@ -2,13 +2,15 @@ using Animators;
 using AppData.Player;
 using AppData.Shopkeeper;
 using Interactions;
+using Items;
 using Physics.Bodies;
+using Screens.Inventory;
 using Screens.Player;
-using Screens.Shop;
 using Shopkeeper;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Wallets;
 
 namespace ServiceContainers
 {
@@ -19,6 +21,7 @@ namespace ServiceContainers
 		[SerializeField] private PlayerData playerData;
 		[SerializeField] private Player.PlayerBehaviour playerPrefab;
 		[SerializeField] private UIDocument playerHUDPrefab;
+		[SerializeField] private UIDocument playerInventoryPrefab;
 		[SerializeField] private float playerInteractionRadius;
 		[SerializeField] private int playerItemCapacity;
 		
@@ -27,7 +30,7 @@ namespace ServiceContainers
 		[SerializeField] private ShopkeeperBehaviour shopkeeperPrefab;
 		[SerializeField] private UIDocument shopScreenPrefab;
 		[SerializeField] private int shopkeeperCapacity;
-		[SerializeField] private Item.Item[] shopkeeperItems;
+		[SerializeField] private Item[] shopkeeperItems;
 		
 		private Player.PlayerBehaviour playerBehaviour;
 		private ShopkeeperBehaviour shopkeeper;
@@ -45,13 +48,13 @@ namespace ServiceContainers
 			var animator = playerBehaviour.transform.GetComponentInChildren<Animator>();
 			var playerBody = new PlayerBody(rb);
 			var playerAnimator = new CharacterAnimator(animator);
-			var playerWallet = new Wallet.Wallet(playerData.StartingGold);
+			var playerWallet = new Wallet(playerData.StartingGold);
 			var playerInteractBehaviour = InitializePlayerInteractor();
 			var playerInventory = new Inventory.Inventory(playerItemCapacity, null);
-			var uiDocument = Instantiate(playerHUDPrefab);
-			var playerHUD = new PlayerHUD(uiDocument, playerData);
+			var playerHUD = new PlayerHUD(Instantiate(playerHUDPrefab), playerData);
+			var playerInventoryScreen = new InventoryScreen(Instantiate(playerInventoryPrefab));
 			playerBehaviour.Inject(playerData, playerBody, playerAnimator, playerWallet, playerInventory, 
-				playerInteractBehaviour, playerHUD);
+				playerInteractBehaviour, playerInventoryScreen, playerHUD);
 		}
 		
 		private PlayerInteractionBehaviour InitializePlayerInteractor()
@@ -67,9 +70,9 @@ namespace ServiceContainers
 		{
 			shopkeeper = Instantiate(shopkeeperPrefab);
 			var uiDocument = Instantiate(shopScreenPrefab);
-			var shopScreen = new ShopScreen(uiDocument);
+			var shopScreen = new InventoryScreen(uiDocument);
 			var inventory = new Inventory.Inventory(shopkeeperCapacity, shopkeeperItems);
-			var wallet = new Wallet.Wallet(shopkeeperData.StartingGold);
+			var wallet = new Wallet(shopkeeperData.StartingGold);
 			shopkeeper.Inject(shopkeeperData, inventory, wallet, shopScreen);
 		}
 	}

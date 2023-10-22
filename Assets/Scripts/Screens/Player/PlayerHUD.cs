@@ -1,4 +1,5 @@
 using AppData.Player;
+using Extensions;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -21,37 +22,17 @@ namespace Screens.Player
 		public async void UpdateGoldAmount(int amount)
 		{
 			await new WaitUntil(() => RootVisualElement != null);
-			var amountElement = FindVisualElement("GoldLabel");
-			if (amountElement is Label label) label.text = amount.ToString();
+			RootVisualElement.Find<Label>("GoldLabel").text = $"{amount}g";
 		}
-
-		private VisualElement FindVisualElement(string selector) => RootVisualElement.Q<VisualElement>(selector);
 		
 		private async void InitializeAsync(IPlayerData playerData)
 		{
 			await new WaitUntil(() => RootVisualElement != null);
-
-			var nameElement = FindVisualElement("PlayerName");
-			if (nameElement is Label label) label.text = playerData.Name;
-			
-			var profilePictureElement = FindVisualElement("ProfilePicture");
-			if (profilePictureElement is Image image) image.image = playerData.ProfilePicture;
-			
-			var goldElement = FindVisualElement("GoldLabel");
-			if (goldElement is Label label1) label1.text = playerData.StartingGold.ToString();
-
-			SetPickingModeRecursively(RootVisualElement, PickingMode.Ignore);
-			
+			RootVisualElement.Find<Label>("PlayerName").text = playerData.Name;
+			RootVisualElement.Find<Image>("ProfilePicture").image = playerData.ProfilePicture;
+			RootVisualElement.SetPickingModeRecursively(PickingMode.Ignore);
+			UpdateGoldAmount(playerData.StartingGold);
 			Show();
-		}
-		
-		void SetPickingModeRecursively(VisualElement element, PickingMode mode)
-		{
-			element.pickingMode = mode;
-			foreach (var child in element.Children())
-			{
-				SetPickingModeRecursively(child, mode);
-			}
 		}
 	}
 }

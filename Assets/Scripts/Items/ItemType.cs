@@ -1,4 +1,4 @@
-namespace Item
+namespace Items
 {
 	public enum ItemType
 	{
