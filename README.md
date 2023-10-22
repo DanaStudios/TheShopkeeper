@@ -43,7 +43,6 @@ The development process, while thorough, was not without its limitations, primar
   - Scripts/              # Custom scripts for game mechanics
   - Sprites/              # Visual assets for characters, items, and environment
 - Documentation/          # Project documentation and design decisions
-- Builds/                 # Executable files for the game
 - README.md               # Project overview and setup instructions
 ```
 
