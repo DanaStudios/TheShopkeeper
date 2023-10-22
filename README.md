@@ -2,6 +2,11 @@
 
 A 2D Top-Down Shop Interaction Game Made in Unity. "The Shopkeeper" is a prototype that draws inspiration from simulation games like 'The Sims' and 'Stardew Valley'. This project focuses on the creation of a functional clothes shop within a game, incorporating player-shopkeeper interactions, an inventory system, and character customization through equippable items.
 
+## How To Play
+- Movement: WASD Keys
+- Toggle Inventory: I Key
+- Interact: E Key (Near the Shopkeeper)
+
 ## Development Process
 
 ### Initial Setup
