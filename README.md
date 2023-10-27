@@ -6,6 +6,7 @@ A 2D Top-Down Shop Interaction Game Made in Unity. "The Shopkeeper" is a prototy
 - Movement: WASD Keys
 - Toggle Inventory: I Key
 - Interact: E Key (Near the Shopkeeper)
+- Selling: Press the Inventory Key (I) while interacting with the Shopkeeper
 
 ## Development Process
 
