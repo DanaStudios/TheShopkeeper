@@ -15,5 +15,16 @@ namespace Items
 		[field: SerializeField] public int MaxStackCount { get; private set; }
 		
 		public bool Equipped { get; set; }
+
+		public Item(BodyPartType bodyPartType, string name, string description, Sprite sprite, int cost,
+			int maxStackCount)
+		{
+			BodyPartType = bodyPartType;
+			Name = name;
+			Description = description;
+			Sprite = sprite;
+			Cost = cost;
+			MaxStackCount = maxStackCount;
+		}
 	}
 }

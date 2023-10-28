@@ -41,12 +41,13 @@ namespace Screens.Inventory
 			var groupedItems = items.GroupBy(i => i.Name).OrderBy(g => g.Key);
 			foreach (var group in groupedItems)
 			{
-				var count = group.Count();
-				var item = group.First();
-				var slotsNeeded = (int)Math.Ceiling((double)count / item.MaxStackCount);
+				var itemList = group.ToList();
+				var count = itemList.Count;
+				var slotsNeeded = (int)Math.Ceiling((double)count / itemList[0].MaxStackCount);
 
 				for (var i = 0; i < slotsNeeded; i++)
 				{
+					var item = itemList[i];
 					var itemCount = item.MaxStackCount > 1 ? count : 1;
 					var itemElement = CreateItemElement(item, itemCount);
 					itemListContainer.Add(itemElement);

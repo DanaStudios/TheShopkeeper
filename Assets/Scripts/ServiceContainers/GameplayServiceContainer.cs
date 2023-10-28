@@ -1,7 +1,9 @@
+using System.Linq;
 using Animators;
 using AppData.Player;
 using AppData.Shopkeeper;
 using BodyParts;
+using Factories.Items;
 using Interactions;
 using Items;
 using Physics.Bodies;
@@ -42,12 +44,14 @@ namespace ServiceContainers
 		[SerializeField] private Item[] shopkeeperItems;
 		
 		private Player.PlayerBehaviour playerBehaviour;
-		private ShopkeeperBehaviour shopkeeper;
 
 		private void Awake()
 		{
 			InitializePlayer();
-			InitializeShopkeeper();
+			
+			var startPos = shopkeeperPrefab.transform.position;
+			InitializeShopkeeper(startPos);
+			InitializeShopkeeper(startPos * -1.5f);
 		}
 
 		private void InitializePlayer()
@@ -60,16 +64,20 @@ namespace ServiceContainers
 			var playerAnimator = new CharacterAnimator(animator);
 			var playerWallet = new Wallet(playerData.StartingGold);
 			var playerInteractBehaviour = InitializePlayerInteractor();
-			var playerItems = new [] { defaultHeadItem, defaultTorsoItem, defaultLegsItem, defaultFeetItem };
+			var headItem = new ItemFactory(defaultHeadItem).Create();
+			var torsoItem = new ItemFactory(defaultTorsoItem).Create();
+			var legsItem = new ItemFactory(defaultLegsItem).Create();
+			var feetItem = new ItemFactory(defaultFeetItem).Create();
+			var playerItems = new [] { headItem, torsoItem, legsItem, feetItem };
 			var playerInventory = new Inventory.Inventory(playerItemCapacity, playerItems);
 			var playerHUD = new PlayerHUD(Instantiate(playerHUDPrefab), playerData);
 			var playerInventoryScreen = new InventoryScreen(Instantiate(playerInventoryPrefab));
 			var playerBodyParts = new IBodyPart[]
 			{
-				new BodyPart(BodyPartType.Head, CreateRenderer("Head", animator.transform), defaultHeadItem),
-				new BodyPart(BodyPartType.Torso, CreateRenderer("Torso", animator.transform), defaultTorsoItem),
-				new BodyPart(BodyPartType.Legs, CreateRenderer("Legs", animator.transform), defaultLegsItem),
-				new BodyPart(BodyPartType.Feet, CreateRenderer("Feet", animator.transform), defaultFeetItem)
+				new BodyPart(BodyPartType.Head, CreateRenderer("Head", animator.transform), headItem),
+				new BodyPart(BodyPartType.Torso, CreateRenderer("Torso", animator.transform), torsoItem),
+				new BodyPart(BodyPartType.Legs, CreateRenderer("Legs", animator.transform), legsItem),
+				new BodyPart(BodyPartType.Feet, CreateRenderer("Feet", animator.transform), feetItem)
 			};
 			
 			playerBehaviour.Inject(playerData, playerBody, playerBodyParts, playerAnimator, playerWallet, 
@@ -95,12 +103,13 @@ namespace ServiceContainers
 			return newRenderer;
 		}
 		
-		private void InitializeShopkeeper()
+		private void InitializeShopkeeper(Vector3 position)
 		{
-			shopkeeper = Instantiate(shopkeeperPrefab);
+			var shopkeeper = Instantiate(shopkeeperPrefab, position, default, null);
 			var uiDocument = Instantiate(shopScreenPrefab);
 			var shopScreen = new InventoryScreen(uiDocument);
-			var inventory = new Inventory.Inventory(shopkeeperCapacity, shopkeeperItems);
+			var items = shopkeeperItems.Select(item => new ItemFactory(item).Create()).ToArray();
+			var inventory = new Inventory.Inventory(shopkeeperCapacity, items);
 			var wallet = new Wallet(shopkeeperData.StartingGold);
 			shopkeeper.Inject(shopkeeperData, inventory, wallet, shopScreen);
 		}

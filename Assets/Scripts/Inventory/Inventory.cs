@@ -11,7 +11,7 @@ namespace Inventory
 		public event Action Updated;
 		private readonly int capacity;
 		
-		public Inventory(int capacity, IEnumerable<Item> items)
+		public Inventory(int capacity, IItem[] items)
 		{
 			Items = new List<IItem>(capacity);
 			this.capacity = capacity;
@@ -26,7 +26,7 @@ namespace Inventory
 		
 		public IItem[] GetItems(IItem item, int count)
 		{
-			if (Items.Count(i => i == item) != count)
+			if (Items.Count(i => i == item) < count)
 			{
 				throw new Exception($"Not enough {item.Name} to remove!");
 			}
